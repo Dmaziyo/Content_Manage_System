@@ -1,0 +1,12 @@
+{% extends "layout.html" %}{% block content %}
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/blog_detail.css">
+<div class="blog_detail">
+    <div class="blog_detail_box">
+        <div class="blog_title">{{blog.dataValues.title}}</div>
+        <p class="releaseTime">{{blog.dataValues.createdAt | safe}}</p>
+        <div class="markdown-body">{{blog.dataValues.html_text | safe}}</div>
+    </div>
+    {% include "swiper.html" ignore missing %}
+</div>
+{% endblock %}

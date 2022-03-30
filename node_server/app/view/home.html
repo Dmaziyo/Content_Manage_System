@@ -1,0 +1,58 @@
+<!-- 继承layout,并且实现content -->
+{% extends "layout.html" %}{% block content %}
+<link rel="stylesheet" href="/css/home.css">
+<div class="content">
+    {% include "swiper.html" ignore missing %}
+    <div class="data">
+        <h2 class="home_title">精选手册</h2>
+        <div class="home_list">
+           <ul>
+            {% for book in bookList %}
+            <a class="book_item" href="/section/{{book.dataValues.id}}">
+                <li>
+                    <img src="{{book.dataValues.img}}" alt="封面图">
+                    <div class="book_item_right">
+                        <h3 class="book_title">{{book.dataValues.title}}</h3>
+                        <button class="read_btn">阅读</button>
+                    </div>
+                </li>
+            </a>
+            {% endfor %}
+           </ul>
+        </div>
+        <h2 class="home_title">精选博客</h2>
+        <div class="home_list">
+            <ul>
+                {% for blog in blogList %}
+                <a class="book_item" href="/blog/{{blog.dataValues.id}}">
+                    <li>
+                        <img src="{{blog.dataValues.img}}" alt="封面图">
+                        <div class="book_item_right">
+                            <h3 class="book_title">{{blog.dataValues.title}}</h3>
+                            <button class="read_btn">阅读</button>
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+               </ul>
+        </div>
+        <h2 class="home_title">精选视频</h2>
+        <div class="home_list">
+            <ul>
+                {% for video in videoList %}
+                <a class="book_item" href="/video/{{video.dataValues.id}}">
+                    <li>
+                        <img src="{{video.dataValues.img}}" alt="封面图">
+                        <div class="book_item_right">
+                            <h3 class="book_title">{{video.dataValues.title}}</h3>
+                            <button class="read_btn">观看</button>
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+               </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

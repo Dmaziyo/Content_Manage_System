@@ -1,0 +1,48 @@
+.content{
+    max-width: 1220px;
+    min-width: 1220px;
+    margin: 0 auto;
+}
+.bigbox{
+    width: 955px;
+    min-height: 975px;
+    float: left;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+.bigbox h3{
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #eeeeee;
+}
+.bigbox ul{
+    list-style: none;
+}
+.bigbox li{
+    width: 875px;
+    height: 97px;
+    border-bottom: 1px solid #eeeeee;
+}
+.bigbox .title{
+    color: black;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.bigbox .code{
+    color: #808080;
+    font-size: 12px;
+}
+.bigbox .left{
+    margin-top: 25px;
+   float: left;
+}
+.bigbox .right{
+    margin-top: 25px;
+    float: right;
+}
+.bigbox a{
+    text-decoration: none;
+    color: #0083fc;
+    font-size: 13px;
+}

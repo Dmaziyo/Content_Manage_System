@@ -1,0 +1,24 @@
+.blog_detail{
+    max-width: 1322px;
+    min-width: 1322px;
+    margin: 0 auto;
+}
+.blog_detail_box{
+    float: left;
+    padding: 20px;
+    width: 955px;
+    min-height: 504px;
+    background-color: white;
+    margin-top: 12px;
+}
+.releaseTime{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #b2b2b2;
+    font-size: 16px;
+}
+.blog_title{
+    font-size: 17px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}

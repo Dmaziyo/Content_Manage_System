@@ -1,0 +1,29 @@
+{% extends "layout.html" %} {% block content %}
+<link rel="stylesheet" href="/css/video_detail.css">
+<div class="video_detail">
+    <div class="content">
+        <div class="videoplay">
+            <h3 class="title">视频title</h3>
+            <div class="video">
+                {{video.iframe_url | safe}}
+                
+            </div>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="slider_head">b站视频</div>
+        <div class="slider_content">
+            <h3>视频列表</h3>
+            <ul>
+                {% for video_item in videoList %}
+                <li>
+                    <a href="/video/{{video_item.id}}">
+                        {{video_item.title}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

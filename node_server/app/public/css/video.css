@@ -1,0 +1,58 @@
+/* 利用一个大盒子，然后里面小盒子左边浮动，调整布局 */
+.content{
+    max-width: 1260px;
+    min-width: 1260px;
+    margin: 0 auto;
+}
+.bigbox{
+    width: 955px;
+    float: left;
+}
+.video_list{
+    width: 100%;
+    min-height: 650px;
+    border: 1px solid white;
+    background-color:white;
+    list-style: none;
+}
+.video_list .left img{
+    width: 230px;
+    height: 150px;
+    clear: both;
+
+}
+.video_list li{
+    overflow: hidden;
+    width: 955px;
+    margin-top: 25px;
+}
+.video_list .left{
+    float: left;
+    margin-right: 25px;
+}
+.video_list .right{
+    float: left;
+}
+.video_list .right a{
+    display: inline-block;
+    text-decoration: none;
+    height: 40px;
+    width: 90px;
+    line-height: 40px;
+    background-color: #e3f0fc;
+    color: #0084ff;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.video_list .right h4{
+    text-align: center;
+}
+.footer{
+    width: 955px;
+    height: 50px;
+    text-align: center;
+    line-height: 51px;
+    background-color: white;
+}

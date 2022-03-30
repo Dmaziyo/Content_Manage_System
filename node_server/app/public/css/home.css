@@ -1,0 +1,57 @@
+.content{
+    max-width: 1260px;
+    min-width: 1260px;
+    margin: 0 auto;
+}
+.content .data{
+    width: 955px;
+    float: left;
+}
+.home_title{
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    font-size: 20px;
+    line-height: 50px;
+    font-family: '微软雅黑';
+    padding-left: 25px;
+}
+.home_list{
+    width: 100%;
+    min-height: 200px;
+    background-color: white;
+}
+.book_item{
+    text-decoration: none;
+}
+.book_item img{
+    list-style: none;
+    float: left;
+    margin-top: 25px;
+    width: 230px;
+    height: 150px;
+}
+.book_item_right{
+    float: left;
+    margin-top: 35px;
+    margin-left: 25px;
+}
+
+.book_item li{
+    overflow: hidden;
+    list-style: none;
+    margin-bottom: 40px;
+}
+.book_title{
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: black;
+}
+.read_btn{
+    cursor: pointer;
+    background-color: #e4f0fc;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}{% block content %}
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/book_detail.css">
+<div class="book_detail">
+    <div class="book_content">
+        <div class="book_link">
+            <div class="book_nav">
+                <!-- 遍历目录 -->
+                {% for chapter in menu %}
+                <div class="book_chapter" keys="{{chapter.id}}">
+                  <div class="showSection">
+                    <button class="showSection_btn"><img src="/images/右箭头.png" alt=""></button>
+                    <a class="chapter_name" href="#">{{chapter.dataValues.title}}</a>
+                  </div>
+                    <ul class="hide">
+                        {% for section in chapter.dataValues.sectionList %}
+                        <li><a class="section_name" href="/section/{{section.dataValues.id}}">{{section.dataValues.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="readcontent">
+            <div class="sectionName">
+                {{section.dataValues.title}}
+            </div>
+            <div class="content_text markdown-body">{{section.dataValues.html_text | safe}}</div>
+        </div>
+        <div class="book_list">
+            <ul>
+                {% for book in bookList %}
+                <li>{{book.dataValues.title}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script>
+  
+   
+    $(".showSection").click(function(){
+      // 又不是手风琴，要什么单独开
+        let img_src=$(this).find(".showSection_btn img").attr('src');
+        console.log(img_src);
+        if(img_src==='/images/右箭头.png'){
+          $(this).find(".showSection_btn img").attr("src","/images/下箭头.png");
+    }
+    else{
+      $(this).find(".showSection_btn img").attr("src","/images/右箭头.png");
+    }
+    $(this).parent().find("ul").toggle("hide");
+    })
+</script>
+{% endblock %}

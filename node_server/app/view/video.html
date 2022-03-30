@@ -1,0 +1,20 @@
+{% extends "layout.html" %}{% block content %}
+<link rel="stylesheet" href="/css/video.css">
+<div class="content">
+    <div class="bigbox">
+        <ul class="video_list">
+            {% for video in videoList %}
+                <li>
+                    <div class="left"><img src="{{video.dataValues.img}}" alt=""></div>
+                    <div class="right">
+                        <h4>{{video.dataValues.title}}</h4>
+                        <a href="/video/{{video.dataValues.id}}">观看</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="footer">更多内容敬请期待</div>
+    </div>
+    {% include "swiper.html" ignore missing %}
+</div>
+{% endblock %}

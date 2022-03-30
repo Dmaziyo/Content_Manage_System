@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+    <script src="/js/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="head_left">
+                <a href="/"><img class="title" src="/images/font_img.jpg" alt=""></a>
+                <a class="a" href="/"><span class="word">首页</span></a>
+                <a class="a" href="/book"><span class="word">学习手册</span></a>
+                <a class="a" href="/blog"><span class="word">技术博客</span></a>
+                <a class="a" href="/video"><span class="word">教学视频</span></a>
+                <a class="a" href="/resource"><span class="word">资源下载</span></a>
+        </div>
+        <div class="head_right">
+            <input class="search_ipt" type="text" placeholder="搜索">
+        </div>
+    </div>
+
+
+    <div class="hyperlink">
+        <div  class="Code">
+            <img class="qrcode" src="/images/qrcode.jpg" alt="">
+            <div class="text">关注MaziYo公众号</div>
+        </div>
+      
+        <ul>
+            <li> <img id="qrcode" src="/images/微信.png" alt=""></li>
+            <li><img id="backTop" src="/images/backTop.png" alt=""></li>
+        </ul>
+    </div>
+    {% block content %}{% endblock %}
+    {% block js %}{% endblock %}
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        let path="";
+        if(location.pathname.indexOf("/book")>-1){
+            path="/book"
+        }
+        else if(location.pathname.indexOf("/blog")>-1){
+            path="/blog"
+        }
+        else if(location.pathname.indexOf("/video")>-1){
+            path="/videos"
+        }
+        else if(location.pathname.indexOf("/resource")>-1){
+            path="/resource"
+        }
+        else{
+            path=location.pathname;
+        }
+        console.log(path)
+        switch (path) {
+            case "/":
+                setLine(0);
+                break;
+            case "/book":
+                setLine(1);
+                break;
+            case "/blog":
+                setLine(2);
+                break;
+            case "/videos":
+                setLine(3);
+                break;
+            case "/resource":
+                setLine(4);
+                break;
+        }
+        function setLine(index){
+            $('.word').eq(index).addClass("active");
+        }
+        $('#qrcode').hover(function(){
+            $('#qrcode').attr('src','/images/微信_ac.png')
+            $('.Code').css('display','block')
+        },function(){
+            $('#qrcode').attr('src','/images/微信.png')
+            $('.Code').css('display','none')
+        })
+        $('#backTop').hover(function(){
+            $('#backTop').attr('src','/images/backTop_ac.png')
+        },function(){
+            $('#backTop').attr('src','/images/backTop.png')
+        })
+        $('#backTop').click(function(){
+            $('body,html').animate({
+                scrollTop:0
+            },400);
+            return false
+        })
+        // 初始化swiper
+        let mySwiper=new Swiper('.swiper',{
+            loop: true, // 循环模式选项
+            autoplay:{
+                delay:1500
+            },
+           pagination: {
+           el: '.swiper-pagination',
+            },
+            navigation: {
+           nextEl: '.swiper-button-next',
+           prevEl: '.swiper-button-prev',
+            },
+        })
+    </script>
+</body>
+</html>

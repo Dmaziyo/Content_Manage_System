@@ -1,0 +1,24 @@
+{% extends "layout.html" %} {% block content %}
+<link rel="stylesheet" href="/css/book.css">
+<div class="content">
+    <div class="bigbox">
+        <ul style="list-style: none;">
+            {% for book in bookList %}
+            <!-- 此处源码有bug，跳转和书的id不符合 -->
+                <a class="book_item" href="/section/{{book.id}}">
+                <li>
+                    <img src="{{book.img}}" alt="封面图">
+                    <div class="book_item_right">
+                        <span class="book_title">{{book.title}}</span>
+                        <button class="read_btn">阅读</button>
+                    </div>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    {% include "swiper.html" ignore missing %}
+    <div class="footer">更多内容敬请期待</div>
+</div>
+
+{% endblock %}

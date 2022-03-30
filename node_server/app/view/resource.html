@@ -1,0 +1,22 @@
+{% extends "layout.html" %}{% block content %}
+<link rel="stylesheet" href="/css/resource.css">
+<div>
+    <div class="content">
+        <div class="bigbox">
+            <h3>资源下载</h3>
+            <ul>
+                {% for resource in resourceList %}
+                <li>
+                    <div class="left">
+                        <div class="title">{{resource.dataValues.title}}</div>
+                        <div class="code">提取码:{{resource.dataValues.code}}</div>
+                    </div>
+                    <div class="right"><a href="{{resource.dataValues.url}}">立即下载</a></div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% include "swiper.html" ignore missing %}
+</div>
+{% endblock %}

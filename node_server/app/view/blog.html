@@ -1,0 +1,25 @@
+{% extends "layout.html" %}{% block content %}
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/blog.css">
+<div class="blog">
+    <div class="box">
+        <ul>
+            {% for blog in blogList %}
+               
+                    <a href="/blog/{{blog.dataValues.id}}">
+                        <li class="blog_item">
+                            <img class="left" src="{{blog.dataValues.img}}" alt="">
+                            <div class="right">
+                                <div class="blog_title">{{blog.dataValues.title}}</div>
+                                <div class="paragraph markdown-body">{{blog.dataValues.html_text | safe}}</div>                
+                            </div>
+                        </li>
+                        <div >
+                   </a>
+            {% endfor %}
+        </ul>
+        <div class="footer">更多精彩内容敬请期待</div>
+    </div>
+    {% include "swiper.html" ignore missing %}
+</div>
+{% endblock %}
