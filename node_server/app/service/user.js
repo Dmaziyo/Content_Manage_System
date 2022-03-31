@@ -4,6 +4,12 @@ const Service = require('egg').Service;
 const md5 = require('md5');
 
 class UserService extends Service {
+  // 创建测试账户
+  async initTest() {
+    const username = 'MaZiYo';
+    const password = '123456';
+    await this.createUser({ username, password });
+  }
   // 创建用户
   async createUser({ username, password }) {
     password = md5(password + 'MaZiYo');
@@ -49,21 +55,41 @@ class UserService extends Service {
     try {
       password = md5(password + 'MaZiYo');
       console.log(password);
-      const userList = await this.getUserList();
-      for (const item of userList) {
-        if (item.dataValues.username === username && item.dataValues.password === password) {
-          const token = this.app.jwt.sign({ username, password }, this.app.config.jwt.secret);
-          return {
-            state: true,
-            token,
-          };
-        }
+      let userList = await this.getUserList();
+      if (userList.length !== 0) {
+        const ret = await this.Verify(username, password, userList);
+        return ret;
       }
-      return false;
+      await this.initTest();
+      userList = await this.getUserList();
+      const ret = await this.Verify(username, password, userList);
+      return ret;
     } catch (e) {
       console.log(e);
-      return true;
+      return {
+        state: false,
+        message: '账号或密码错误',
+      };
     }
+  }
+  // 验证
+  async Verify(username, password, userList) {
+    console.log(username);
+    console.log(password);
+    console.log(userList);
+    for (const item of userList) {
+      if (item.dataValues.username === username && item.dataValues.password === password) {
+        const token = this.app.jwt.sign({ username, password }, this.app.config.jwt.secret);
+        return {
+          state: true,
+          token,
+        };
+      }
+    }
+    return {
+      state: false,
+      message: '账号或密码错误',
+    };
   }
   async VerifyToken(token) {
     try {
