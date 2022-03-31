@@ -84,5 +84,21 @@ class BlogController extends Controller {
       };
     }
   }
+  async destroy() {
+    try {
+      const id = this.ctx.params.id;
+      const message = await this.ctx.service.blog.deleteBlog(id);
+      this.ctx.body = {
+        code: 200,
+        message,
+      };
+    } catch (e) {
+      console.log(e);
+      this.ctx.body = {
+        code: 400,
+        message: '删除失败',
+      };
+    }
+  }
 }
 module.exports = BlogController;

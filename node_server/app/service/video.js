@@ -51,5 +51,23 @@ class VideoService extends Service {
       return false;
     }
   }
+  // 删除视频
+
+  async deleteVideo(id) {
+    try {
+      const delBlog = await this.app.model.Video.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delBlog,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 module.exports = VideoService;

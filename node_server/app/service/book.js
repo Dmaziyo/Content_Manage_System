@@ -52,6 +52,24 @@ class BookService extends Service {
       return false;
     }
   }
+  // 删除书籍
+  async deleteBook(id) {
+    console.log(id);
+    try {
+      const delBook = await this.app.model.Book.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delBook,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 
 module.exports = BookService;

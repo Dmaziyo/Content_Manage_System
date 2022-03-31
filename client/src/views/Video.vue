@@ -29,7 +29,11 @@
       </el-dialog>
     </div>
     <el-table :data="videoList" border style="width: 80%">
-      <el-table-column prop="id" label="序号" width="120"></el-table-column>
+      <el-table-column label="序号" width="120">
+        <template slot-scope="scope">
+          <label for>{{scope.$index+1}}</label>
+        </template>
+      </el-table-column>
       <el-table-column prop="img" label="封面" width="450"></el-table-column>
       <el-table-column prop="title" label="视频标题" width="300"></el-table-column>
       <el-table-column prop="address" label="详情" width="100">
@@ -43,7 +47,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="update(scope.row)" type="text" size="small">编辑</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button @click="deleteVideo(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -137,6 +141,12 @@ export default {
       this.dialogFormVisible = false
       ;(this.form.title = ''), (this.form.img = ''), (this.form.iframe_url = '')
       this.isEdit = false
+    },
+    // 删除视频
+    deleteVideo({ id }) {
+      request.delete(`/video/${id}`).then(() => {
+        this.getVideoList()
+      })
     }
   }
 }

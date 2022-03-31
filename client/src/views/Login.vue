@@ -36,7 +36,7 @@ export default {
           if (data.message.state) {
             localStorage.setItem('token', data.message.token)
             this.$message({
-              message: '恭喜你，这是一条成功消息',
+              message: '登录成功',
               type: 'success'
             })
             this.$router.push('/')

@@ -62,5 +62,22 @@ class BookController extends Controller {
       };
     }
   }
+  // 删除书籍
+  async destroy() {
+    try {
+      const id = this.ctx.params.id;
+      const message = await this.ctx.service.book.deleteBook(id);
+      this.ctx.body = {
+        code: 200,
+        message,
+      };
+    } catch (e) {
+      console.log(e);
+      this.ctx.body = {
+        code: 400,
+        message: '删除失败',
+      };
+    }
+  }
 }
 module.exports = BookController;

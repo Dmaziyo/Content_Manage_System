@@ -9,7 +9,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="editSection(scope.row)" type="text" size="small">编辑</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button @click="deleteSection(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -44,6 +44,11 @@ export default {
     },
     editSection({ id }) {
       this.$router.push(`/section/${id}?chapter_id=${this.chapter_id}`)
+    },
+    deleteSection({ id }) {
+      request.delete(`/section/${id}`).then(() => {
+        this.getSectionList()
+      })
     }
   }
 }

@@ -62,5 +62,21 @@ class BlogService extends Service {
       },
     });
   }
+  async deleteBlog(id) {
+    try {
+      const delBlog = await this.app.model.Blog.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delBlog,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 module.exports = BlogService;

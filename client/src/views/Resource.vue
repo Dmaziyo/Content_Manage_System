@@ -25,14 +25,18 @@
       </el-dialog>
     </div>
     <el-table :data="bookList" border style="width: 80%">
-      <el-table-column prop="id" label="序号" width="120"></el-table-column>
+      <el-table-column label="序号" width="120">
+        <template slot-scope="scope">
+          <label for>{{scope.$index+1}}</label>
+        </template>
+      </el-table-column>
       <el-table-column prop="title" label="资源名称" width="120"></el-table-column>
       <el-table-column prop="code" label="提取码" width="300"></el-table-column>
       <el-table-column prop="url" label="下载地址"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="update(scope.row)" type="text" size="small">编辑</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button @click="deleteBook(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -100,6 +104,7 @@ export default {
           })
       }
     },
+    // 更新
     update({ id, title, url, code }) {
       this.updateId = id
       this.isEdit = true
@@ -108,10 +113,17 @@ export default {
       this.form.url = url
       this.form.code = code
     },
+    // 重置
     cancel() {
       this.dialogFormVisible = false
       ;(this.form.title = ''), (this.form.code = ''), (this.form.url = '')
       this.isEdit = false
+    },
+    // 删除
+    deleteBook({ id }) {
+      request.delete(`/resource/${id}`).then(() => {
+        this.getResourceList()
+      })
     }
   }
 }

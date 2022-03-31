@@ -100,5 +100,23 @@ class SectionService extends Service {
       return false;
     }
   }
+
+  // 删除节
+  async deleteSection(id) {
+    try {
+      const delSec = await this.app.model.Section.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delSec,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 module.exports = SectionService;

@@ -44,5 +44,22 @@ class ChapterService extends Service {
       return false;
     }
   }
+  // 删除章
+  async deleteChapter(id) {
+    try {
+      const delChapter = await this.app.model.Chapter.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delChapter,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 module.exports = ChapterService;

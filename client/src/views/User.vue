@@ -20,12 +20,16 @@
       </el-dialog>
     </div>
     <el-table :data="userList" border style="width: 80%">
-      <el-table-column prop="id" label="序号" width="120"></el-table-column>
+      <el-table-column label="序号" width="120">
+        <template slot-scope="scope">
+          <label for>{{scope.$index+1}}</label>
+        </template>
+      </el-table-column>
       <el-table-column prop="username" label="用户名"></el-table-column>
       <el-table-column width="200" label="操作">
         <template slot-scope="scope">
           <el-button @click="update(scope.row)" type="text" size="small">重置密码</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button @click="deleteUser(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -99,6 +103,12 @@ export default {
       this.form.username = ''
       this.form.password = ''
       this.isEdit = false
+    },
+    // 删除用户
+    deleteUser({ id }) {
+      request.delete(`/user/${id}`).then(() => {
+        this.getUserList()
+      })
     }
   }
 }

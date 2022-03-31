@@ -105,5 +105,21 @@ class UserService extends Service {
       return false;
     }
   }
+  async deleteUser(id) {
+    try {
+      const delUser = await this.app.model.User.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delUser,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 module.exports = UserService;

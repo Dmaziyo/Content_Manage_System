@@ -49,5 +49,22 @@ class ResourceService extends Service {
       return false;
     }
   }
+  // 删除资源
+  async deleteResource(id) {
+    try {
+      const delResource = await this.app.model.Resource.destroy({
+        where: {
+          id,
+        },
+      });
+      return {
+        state: true,
+        delData: delResource,
+      };
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
 }
 module.exports = ResourceService;
