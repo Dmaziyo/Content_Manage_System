@@ -1,5 +1,9 @@
 # Content_Manage_Sys
 一个前后端的内容管理系统
+## 测试账户
+username:MaZiYo
+password：123456
+
 ### 建议使用淘宝源
 ### node_server
 - 首先修改node_server文件中config路径下的config.default.js
