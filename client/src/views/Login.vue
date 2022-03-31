@@ -35,7 +35,10 @@ export default {
           const data = res.data
           if (data.message.state) {
             localStorage.setItem('token', data.message.token)
-            this.$message('登录成功')
+            this.$message({
+              message: '恭喜你，这是一条成功消息',
+              type: 'success'
+            })
             this.$router.push('/')
           } else {
             this.$message.error('账号或密码错误')
