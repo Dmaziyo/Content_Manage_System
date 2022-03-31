@@ -18,12 +18,23 @@ npm run dev
 yarn install
 yarn run serve
 ```
-
+### 后台登录
+------
 ![image](https://user-images.githubusercontent.com/74136983/160855048-ec3c9ae6-607f-45ea-be0a-1d5995d78dd2.png)
+### 书籍管理和添加
+----
 ![image](https://user-images.githubusercontent.com/74136983/160855127-6a3df23b-bbc0-4411-976b-61b762a4d060.png)
+### 内容添加
+----
 ![image](https://user-images.githubusercontent.com/74136983/160855318-3415678c-ffdf-4aeb-9b26-9bc16c146b6c.png)
+### 内容展示
+----
 ![image](https://user-images.githubusercontent.com/74136983/160855661-ab01b62c-1f76-400d-940e-fb897d3fa47b.png)
+### 视频添加
+----
 ![image](https://user-images.githubusercontent.com/74136983/160855770-883424fa-8d70-499f-ad8f-5e138e8270de.png)
+### 视频展示
+----
 ![image](https://user-images.githubusercontent.com/74136983/160855832-507f0179-2af4-4f7f-843a-2ec65d4a2521.png)
 ![image](https://user-images.githubusercontent.com/74136983/160855882-2464e662-aba5-4455-9b37-57b52b09adf4.png)
 
